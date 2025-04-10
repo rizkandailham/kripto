@@ -1,7 +1,7 @@
 import hashlib
 from binascii import *
 from base64 import *
-
+ 
 
 class kripto:
   def enc(self,kunci):
