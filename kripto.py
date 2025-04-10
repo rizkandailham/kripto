@@ -16,18 +16,3 @@ class sandi:
     dec=b64decode(kunci)
     dec=hexlify(dec)
     return dec.decode("ascii")
-
-#print(buat.s256("ilham rizkanda, S.Kom"))
-"""
-no=0
-lop=False
-while lop==False:
-
-  if buat.s256(no) == "35803409c35e5cd3acd801517af64528c4a35c79e121fef83f5389294e8416ce":
-    print("ditemukan pada ",no)
-    print("hash yang dicari 597180d3039f1b7b7dde3ebdc56e13c698ef66dc18cf72ed61a4f79c8a904524")
-    break
-  else:
-    no+=1
-"""
-#print(buat.s256(123423))
