@@ -1,3 +1,5 @@
+#export requirement dengan pip freeze > requirements.txt
+#inilah pentingny pakek venv biar nggak kebanyakan install lib
 import pyshorteners
 import flask
 import json

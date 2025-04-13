@@ -2,6 +2,7 @@ import hashlib
 from binascii import *
 from base64 import *
 from time import sleep
+import pyotp
 from pyotp import TOTP as phrase
 class kripto_hash:
     #metode 1 penggunaan fungsi secara berurut
@@ -29,11 +30,21 @@ class kripto_hash:
 
 
 class enkripsi:
-
+  #membuat otp dari secret key
   def otp(key):
       return phrase(kunci).now()
+  #fungsi untuk memvalidasi otp yg digenerate dari fungsi otp
   def otp(verif):
       return phrase(verif).verify()
+  #membuat otp dengan format yang telah distandarisasi
+  def otp_app(key,email,app_name):
+      return phrase(key).provisioning_uri(name=email,issuer_name=app_name)
+  #membuat random karakter sepanjang 32 character
+  def generate_key():
+      return pyotp.random_base32()
+  #membuat secret key dengan format hex encoded string
+  def generate_key_hex():
+      return pyotp.random_hex()
   #mengubah hash menjadi base64
   def b64(self,kunci):
     enkrip=unhexlify(kunci)
