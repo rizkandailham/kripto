@@ -4,18 +4,20 @@ import pyshorteners
 import flask
 import json
 import hashlib
+import string
 
 class web:
     def pendek(link):
         objek=pyshorteners.Shorteners()
         return objek.tinyurl.short(link)
     def acak_tanpa_prase():
-        s="qwertyuiopasdfghjkl;'[]\1234567890-=!@#$%^&*(()QWERTYUIOPASDFGHJKLZXCVBNM<>?:{{}}123456789+-"
-        return "".join(random.sample())
+        length=random.randint(8,16)
+        s=string.ascii_letters+string.punctuation
+        return "".join(random.sample(s,length))
 
     def acak(panjang,phaseprase):
         random.seed(phaseprase)
-        s="qwertyuiopasdfghjkl;'[]\1234567890-=!@#$%^&*(()QWERTYUIOPASDFGHJKLZXCVBNM<>?:{{}}123456789+-"
+        s=string.ascii_letters+string.punctuation
         return "".join(random.sample(s,panjang))
 class web_server:
     def input_password(self,pass):
@@ -34,10 +36,13 @@ class web_server:
         return web.acak(random.randint(8,16),phaseprase)
 
     def registrasi(self):
-
+    #gabut bro wkwkwk lum ketemu yg mood untuk disimpen di database atau kek gimana
     def login(self,username,password):
         validate=False
-        if hashlib.sha256(username.encode()).hexdigest==hashlib.sha256(acak(16,"leetme").encode()).hexdigest():
+        length=random.randint(8,16)
+        s=string.ascii_letters+string.punctuation
+        seed=random.random_sample(s,length)
+        if hashlib.sha256(username.encode()).hexdigest==hashlib.sha256(acak(length,seed).encode()).hexdigest():
             if hashlib.sha256(password.encode()).hexdigest() == hashlib.sha256(acak(16,"pass").encode()).hexdigest():
                 validate=True
         return validate
