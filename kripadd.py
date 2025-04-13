@@ -2,7 +2,7 @@ import hashlib
 from binascii import *
 from base64 import *
 from time import sleep
-
+from pyotp import TOTP as phrase
 class kripto_hash:
     #metode 1 penggunaan fungsi secara berurut
   def enc_traditional(self,kunci):
@@ -29,6 +29,11 @@ class kripto_hash:
 
 
 class enkripsi:
+
+  def otp(key):
+      return phrase(kunci).now()
+  def otp(verif):
+      return phrase(verif).verify()
   #mengubah hash menjadi base64
   def b64(self,kunci):
     enkrip=unhexlify(kunci)
