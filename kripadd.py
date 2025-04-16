@@ -4,6 +4,8 @@ from base64 import *
 from time import sleep
 import pyotp
 from pyotp import TOTP as phrase
+import random
+import string
 class kripto_hash:
     #metode 1 penggunaan fungsi secara berurut
   def enc_traditional(self,kunci):
@@ -28,7 +30,24 @@ class kripto_hash:
   def enc_sha3_512(self,kunci):
       return hashlib.sha3_512(kunci.encode()).hexdigest()
 
+class secure_pass:
+    def generate_pass(self):
+        random.seed()
+        return "".join(random.sample(string.ascii_letters, random.randint(10,16)))
 
+    def generate_hex(self):
+        seed="".join(random.sample(string.ascii_letters*3, random.randint(32,64)))
+        random.seed(seed)
+        return "".join(random.sample(string.hexdigits*4, random.randint(10,16)))
+
+    def validate_blok(self,randpass):
+        i=True
+        while i==True:
+            password=self.generate_pass()
+            if randpass == password:
+                print("ditemukan")
+                i=False
+    
 class enkripsi:
   #membuat otp dari secret key
   def otp(key):
