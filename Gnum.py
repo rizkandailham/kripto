@@ -9,7 +9,7 @@ class guessing:
         random.seed()
         return random.randint(1,100)
 
-    def passive_guess(self,randnum):
+    def passive_guess(self,randnum : int):
         guess=None
         randnum=hashing.enc_sha256(randnum)
         while randnum!=guess:

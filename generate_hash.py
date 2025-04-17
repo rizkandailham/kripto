@@ -11,3 +11,5 @@ class huruf():
 
     def hex():
         return "".join(random.sample(string.hexdigits,random.randint(8,32)))
+if __name__ == '__main__':
+    print("Silahkan jadikan module!")
